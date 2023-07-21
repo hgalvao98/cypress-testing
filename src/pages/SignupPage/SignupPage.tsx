@@ -16,7 +16,7 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
-const LoginPage = () => {
+const SignupPage = () => {
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -35,7 +35,13 @@ const LoginPage = () => {
   return (
     <Container>
       <h1>Signup</h1>
-      <Box component="form" onSubmit={formik.handleSubmit}>
+      <Box
+        component="form"
+        display="flex"
+        flexDirection="column"
+        gap={2}
+        onSubmit={formik.handleSubmit}
+      >
         <TextField
           fullWidth
           id="firstName"
@@ -70,11 +76,11 @@ const LoginPage = () => {
           helperText={formik.touched.email && formik.errors.email}
         />
 
-        <Button variant="contained" type="submit">
+        <Button data-cy="submit-button" variant="contained" type="submit">
           Submit
         </Button>
       </Box>
     </Container>
   );
 };
-export default LoginPage;
+export default SignupPage;
