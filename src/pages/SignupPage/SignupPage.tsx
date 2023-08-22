@@ -1,4 +1,3 @@
-import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Box, Button, Container, TextField } from "@mui/material";
@@ -16,7 +15,7 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
-const LoginPage = () => {
+const SignupPage = () => {
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -70,11 +69,11 @@ const LoginPage = () => {
           helperText={formik.touched.email && formik.errors.email}
         />
 
-        <Button variant="contained" type="submit">
+        <Button data-cy="submit-button" variant="contained" type="submit">
           Submit
         </Button>
       </Box>
     </Container>
   );
 };
-export default LoginPage;
+export default SignupPage;
